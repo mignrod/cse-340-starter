@@ -157,7 +157,7 @@ main {
   #wrapper {
     border: 4px solid #00bfea;
     width: 85%;
-    margin: auto;
+    margin: 0.5rem auto;
   }
 
   .car-wrapper {
