@@ -17,7 +17,4 @@ node_modules
 
 .prettierignore
 
-# Ignore sql files on database folder
-database/*.sql
-
 README.md
