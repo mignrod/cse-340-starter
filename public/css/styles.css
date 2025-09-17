@@ -37,7 +37,6 @@ main {
 
 .navigation {
   background-color: black;
-  color: white;
   margin: 1rem;
 }
 
@@ -50,6 +49,16 @@ main {
 .navigation li {
   list-style: none;
   cursor: pointer;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.navigation a:hover {
+  color: #00bfea;
 }
 
 .container {
