@@ -101,9 +101,20 @@ Util.buildDetailsView = async function (data) {
       '</p>';
     detailView +=
       '<p><strong>Description:</strong> ' + data.inv_description + '</p>';
-    detailView += '<p><strong>Color:</strong> ' + data.inv_color + '</p>';
+    // Capitalize the first letter of the color
+    const color =
+      data.inv_color.charAt(0).toUpperCase() + data.inv_color.slice(1);
+    detailView +=
+      '<p><strong>Color:</strong> ' +
+      color +
+      ' <span style="display:inline-block;width:20px;height:20px;background-color:' +
+      data.inv_color +
+      ';border:1px solid #000;margin-left:8px;vertical-align:middle;"></span></p>';
     detailView += '<p><strong>Year:</strong> ' + data.inv_year + '</p>';
-    detailView += '<p><strong>Miles:</strong> ' + data.inv_miles + '</p>';
+    detailView +=
+      '<p><strong>Miles:</strong> ' +
+      new Intl.NumberFormat('en-US').format(data.inv_miles) +
+      '</p>';
     detailView += '</div>';
   } else {
     detailView =
