@@ -218,6 +218,59 @@ main {
   margin: 2rem;
 }
 
+.detail-title {
+  text-align: left;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+  color: black;
+}
+
+#inv-detail {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+}
+
+#inv-detail h1 {
+  font-size: 1.5rem;
+}
+
+#inv-detail p {
+  font-size: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+footer a {
+  font-weight: bold;
+  color: black;
+}
+
+footer a:hover {
+  color: #00bfea;
+}
+
+footer p {
+  text-align: left;
+}
+
+#inv-detail img {
+  width: 75%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
+  border-radius: 8px;
+}
+
+#inv-detail p strong {
+  font-weight: 800;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     display: grid;
@@ -261,5 +314,32 @@ main {
     height: 200px;
     margin-bottom: 1rem;
     border-radius: 8px;
+  }
+
+  #inv-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #inv-detail h1 {
+    grid-column: 2/3;
+    text-align: left;
+  }
+
+  #inv-detail img {
+    grid-column: 1/2;
+    grid-row: 2/5;
+    align-self: center;
+    width: 100%;
+    height: auto;
+  }
+
+  #inv-detail p {
+    text-align: left;
+    grid-column: 2/3;
+    grid-row: auto;
+    margin: 0.3rem;
+    padding-left: 1rem;
+    font-size: 1.4rem;
   }
 }
