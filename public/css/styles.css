@@ -196,7 +196,7 @@ main {
 }
 
 .img-error {
-  width: 500px;
+  width: 80%;
   height: auto;
   display: block;
   margin: 1rem auto;
@@ -297,6 +297,10 @@ footer p {
 
   .car-wrapper {
     font-size: medium;
+  }
+
+  .img-error {
+    width: 70%;
   }
 
   #inv-display {
