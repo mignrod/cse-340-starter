@@ -271,6 +271,62 @@ footer p {
   font-weight: 800;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  gap: 0.5rem;
+  background-color: #18548f;
+  color: white;
+  border-radius: 8px;
+}
+
+.login-form label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.login-form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.login-form input:focus {
+  outline: 2px solid #00bfea;
+}
+
+.login-form button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: 50%;
+  align-self: center;
+}
+
+.login-form button:hover {
+  background-color: #009ec3;
+  color: white;
+}
+
+.login-form p {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.login-form a {
+  color: white;
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     display: grid;
@@ -345,5 +401,9 @@ footer p {
     margin: 0.3rem;
     padding-left: 1rem;
     font-size: 1.4rem;
+  }
+
+  .login-form {
+    width: 400px;
   }
 }
