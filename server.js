@@ -17,6 +17,7 @@ const errorRoute = require('./routes/error');
 const session = require('express-session');
 const pool = require('./database/');
 const accountRoute = require('./routes/accountRoute');
+const bodyParser = require('body-parser');
 
 /* ***********************
  * View Engines and Templates
@@ -40,6 +41,8 @@ app.use(
     name: 'sessionId'
   })
 );
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Express Messages Middleware
 app.use(require('connect-flash')());

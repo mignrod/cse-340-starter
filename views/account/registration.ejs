@@ -1,16 +1,14 @@
 <title><%= title %></title>
 <h1><%= title %></h1>
 
-<% if (typeof message !== 'undefined' && message) { %>
-<div class="flash-message"><%= message %></div>
-<% } %>
+<%- messages() %>
 
 <form class="register-form" action="/account/registration" method="post">
-  <label for="fName">First Name: <span style="color: white">*</span></label>
-  <input type="text" id="fName" name="account_fName" required />
+  <label for="firstname">First Name: <span style="color: white">*</span></label>
+  <input type="text" id="firstname" name="account_firstname" required />
 
-  <label for="lName">Last Name: <span style="color: white">*</span></label>
-  <input type="text" id="lName" name="account_lName" required />
+  <label for="lastname">Last Name: <span style="color: white">*</span></label>
+  <input type="text" id="lastname" name="account_lastname" required />
 
   <label for="email">Email address: <span style="color: white">*</span></label>
   <input type="email" id="email" name="account_email" required />
@@ -27,12 +25,13 @@
       title="Password must be at least 12 characters, contain a capital letter, a number, and a special character."
       class="password-input"
     />
-    <i
-      class="uil uil-eye-slash toggle"
+    <img
+      class="toggle"
       id="togglePassword"
-      tabindex="0"
-      aria-label="Show password"
-    ></i>
+      aria-label="Show Password"
+      src="/images/site/eye-slash.svg"
+      alt="Toggle password visibility"
+    />
   </div>
   <small>
     Password must be at least 12 characters, contain at least 1 capital letter,
@@ -40,6 +39,4 @@
   </small>
   <small>* Required fields</small>
   <button type="submit">Register</button>
-
-  <script src="/js/password-toggle.js"></script>
 </form>

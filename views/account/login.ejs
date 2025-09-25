@@ -1,9 +1,7 @@
 <title><%= title %></title>
 <h1><%= title.charAt(0).toUpperCase() + title.slice(1) %></h1>
 
-<% if (typeof message !== 'undefined' && message) { %>
-<div class="flash-message"><%= message %></div>
-<% } %>
+<%- messages() %>
 
 <form class="login-form" action="/account/login" method="post">
   <label for="email">Email:</label>

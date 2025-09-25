@@ -13,4 +13,10 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 
+// Route to submit the registration form
+router.post(
+  '/registration',
+  utilities.handleErrors(accountController.registerAccount)
+);
+
 module.exports = router;

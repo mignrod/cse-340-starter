@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.addEventListener('click', () => {
       if (input.type === 'password') {
         input.type = 'text';
-        toggle.classList.replace('uil-eye-slash', 'uil-eye');
+        toggle.src = '/images/site/eye.svg'; // Cambia a ojo abierto
+        toggle.alt = 'Hide password';
       } else {
         input.type = 'password';
-        toggle.classList.replace('uil-eye', 'uil-eye-slash');
+        toggle.src = '/images/site/eye-slash.svg'; // Cambia a ojo cerrado
+        toggle.alt = 'Show password';
       }
     });
   }
