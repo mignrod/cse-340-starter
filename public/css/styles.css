@@ -370,6 +370,16 @@ footer p {
   pointer-events: auto;
 }
 
+.notice {
+  color: red;
+}
+
+.notice li {
+  font-weight: bold;
+  padding: 4px;
+  list-style: none;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     display: grid;
