@@ -55,7 +55,7 @@ main {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .navigation a:hover {
   color: #00bfea;
@@ -64,6 +64,7 @@ main {
 .container {
   display: block;
 }
+
 .upgrades-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -392,6 +393,10 @@ footer p {
   .reviews {
     grid-column: 2/3;
     grid-row: 1/2;
+  }
+
+  .navigation a {
+    font-size: 1.2rem;
   }
 
   .reviews ul {

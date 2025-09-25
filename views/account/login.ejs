@@ -1,11 +1,23 @@
 <title><%= title %></title>
 <h1><%= title.charAt(0).toUpperCase() + title.slice(1) %></h1>
 
-<%- messages() %>
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
 
 <form class="login-form" action="/account/login" method="post">
   <label for="email">Email:</label>
-  <input type="email" id="email" name="account_email" required />
+  <input
+    type="email"
+    id="email"
+    name="account_email"
+    required
+    value="<%= locals.account_email %>"
+  />
 
   <label for="password">Password:</label>
   <input
