@@ -35,4 +35,55 @@ invCont.buildByInventoryId = async (req, res, next) => {
   });
 };
 
+/* ***************************
+ *  Build inventory management view
+ * ************************** */
+invCont.buildManagement = async (req, res, next) => {
+  const nav = await utilities.getNav();
+  res.render('inventory/management', {
+    title: 'Inventory Management',
+    nav
+  });
+};
+
+/* ***************************
+ *  Build add classification view
+ * ************************** */
+invCont.buildAddClassification = async (req, res, next) => {
+  const nav = await utilities.getNav();
+  res.render('inventory/add-classification', {
+    title: 'Add New Classification',
+    nav,
+    errors: null
+  });
+};
+
+/* ***************************
+ *  Add new classification
+ * ************************** */
+invCont.addClassification = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  const { classification_name } = req.body;
+
+  const regResult = await invModel.addClassification(classification_name);
+
+  if (regResult) {
+    req.flash(
+      'notice',
+      `The new classification ${classification_name} was added successfully.`
+    );
+    res.status(201).render('inventory/management', {
+      title: 'Inventory Management',
+      nav
+    });
+  } else {
+    req.flash('notice', 'Sorry, the registration failed.');
+    res.status(501).render('inventory/add-classification', {
+      title: 'Add New Classification',
+      nav,
+      errors: null
+    });
+  }
+};
+
 module.exports = invCont;

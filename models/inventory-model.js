@@ -1,3 +1,4 @@
+const { check } = require('express-validator');
 const pool = require('../database/');
 
 /* ***************************
@@ -45,8 +46,37 @@ async function getByInventoryId(inventory_id) {
   }
 }
 
+/* ***************************
+ *  Save new classification
+ * ************************** */
+async function addClassification(classification_name) {
+  try {
+    const sql =
+      'INSERT INTO classification (classification_name) VALUES ($1) RETURNING *';
+    const data = await pool.query(sql, [classification_name]);
+    return data.rows[0];
+  } catch (error) {
+    return error.message;
+  }
+}
+
+/* ***************************
+ *  Check for existing classification name
+ * ************************** */
+async function checkExistingClassificationName(classification_name) {
+  try {
+    const sql = 'SELECT * FROM classification WHERE classification_name = $1';
+    const classification = await pool.query(sql, [classification_name]);
+    return classification.rowCount;
+  } catch (error) {
+    return error.message;
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
-  getByInventoryId
+  checkExistingClassificationName,
+  getByInventoryId,
+  addClassification
 };
