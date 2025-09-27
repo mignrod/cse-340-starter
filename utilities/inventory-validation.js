@@ -31,12 +31,13 @@ validate.addClassificationRules = () => {
 /*  **********************************
  *  check classification data
  * ********************************* */
-validate.checkClassificationData = (req, res, next) => {
+validate.checkClassificationData = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    const nav = await utilities.getNav();
     return res.render('inventory/add-classification', {
       title: 'Add New Classification',
-      nav: utilities.getNav(),
+      nav,
       errors
     });
   }

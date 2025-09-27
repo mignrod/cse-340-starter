@@ -381,6 +381,120 @@ footer p {
   list-style: none;
 }
 
+.management-subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: 8px;
+  color: black;
+}
+.management-links ul {
+  display: flex;
+  gap: 4.5rem;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.management-links li {
+  list-style: none;
+}
+
+.management-links a {
+  text-decoration: none;
+  background-color: #18548f;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.management-links a:hover {
+  background-color: #009ec3;
+}
+
+.add-classification-form,
+.add-inventory-form {
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  gap: 0.5rem;
+  background-color: #18548f;
+}
+
+.add-classification-form button,
+.add-inventory-form button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  width: 50%;
+  align-self: center;
+}
+
+.add-classification-form button:hover,
+.add-inventory-form button:hover {
+  background-color: #009ec3;
+  color: white;
+}
+
+.add-classification-form label,
+.add-inventory-form label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.add-classification-form input,
+.add-inventory-form input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.add-classification-form input:focus,
+.add-inventory-form input:focus {
+  outline: 2px solid #00bfea;
+}
+
+.add-classification-form small {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.add-inventory-form textarea {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 120px;
+  font-size: 1rem;
+}
+
+.add-inventory-form select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+}
+
+.add-inventory-form input[type='number']::-webkit-inner-spin-button,
+.add-inventory-form input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     display: grid;
@@ -464,5 +578,10 @@ footer p {
   .login-form,
   .register-form {
     width: 400px;
+  }
+
+  .management-links ul {
+    display: flex;
+    flex-direction: row;
   }
 }

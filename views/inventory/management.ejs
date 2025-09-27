@@ -5,6 +5,8 @@ The content heading
 <h1 class="management-title"><%= title %></h1>
 <% } else { res.redirect('/') } %>
 
+<h3 class="management-subtitle">Select One Option</h3>
+
 <!-- 
 Message Block
 -->
@@ -13,7 +15,7 @@ Message Block
 <!-- 
 Links to handle inventory management
 -->
-<nav>
+<nav class="management-links">
   <ul>
     <li>
       <a href="/inv/add-classification">Add New Classification</a>

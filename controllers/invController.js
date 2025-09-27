@@ -72,6 +72,7 @@ invCont.addClassification = async (req, res, next) => {
       'notice',
       `The new classification ${classification_name} was added successfully.`
     );
+    const nav = await utilities.getNav();
     res.status(201).render('inventory/management', {
       title: 'Inventory Management',
       nav
@@ -84,6 +85,21 @@ invCont.addClassification = async (req, res, next) => {
       errors: null
     });
   }
+};
+
+/* ***************************
+ *  Build inventory by detail view
+ * ************************** */
+invCont.buildAddInventory = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  let data = await invModel.getClassifications();
+  let classificationList = await utilities.buildClassificationList(data);
+  res.render('inventory/add-inventory', {
+    title: 'Add Inventory',
+    nav,
+    errors: null,
+    classificationList
+  });
 };
 
 module.exports = invCont;
