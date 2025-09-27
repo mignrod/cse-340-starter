@@ -126,24 +126,14 @@ Util.buildDetailsView = async function (data) {
 /*  **********************************
  *  Build classification Lists
  * ********************************* */
-Util.buildClassificationList = async function (
-  classification_id = null,
-  stickyValue = null
-) {
+Util.buildClassificationList = async function (selectedId = null) {
   let data = await invModel.getClassifications();
   let classificationList =
     '<select name="classification_id" id="classification_id" required>';
-  classificationList += "<option value=''>Choose a Classification</option>";
+  classificationList += '<option value="">Choose a Classification</option>';
   data.rows.forEach((row) => {
-    classificationList += '<option value="' + row.classification_id + '"';
-    if (
-      (classification_id != null &&
-        row.classification_id == classification_id) ||
-      (stickyValue != null && row.classification_id == stickyValue)
-    ) {
-      classificationList += ' selected ';
-    }
-    classificationList += '>' + row.classification_name + '</option>';
+    let selected = selectedId == row.classification_id ? 'selected' : '';
+    classificationList += `<option value="${row.classification_id}" ${selected}>${row.classification_name}</option>`;
   });
   classificationList += '</select>';
   return classificationList;

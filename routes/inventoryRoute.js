@@ -41,11 +41,11 @@ router.get(
 );
 
 // Post an inventory item
-// router.post(
-//   '/add-inventory',
-//   invValidate.addInventoryRules(),
-//   invValidate.checkInventoryData,
-//   utilitites.handleErrors(invController.addInventory)
-// );
+router.post(
+  '/add-inventory',
+  invValidate.addInventoryRules(),
+  invValidate.checkInventoryData,
+  utilities.handleErrors(invController.addInventory)
+);
 
 module.exports = router;

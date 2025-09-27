@@ -21,6 +21,7 @@
     required
     value="<%= locals.inv_make %>"
     title="Vehicle make company name"
+    placeholder="Min 3 characters"
   />
 
   <label for="inv_model">Model: </label>
@@ -31,6 +32,7 @@
     required
     value="<%= locals.inv_model %>"
     title="Vehicle model name"
+    placeholder="Min 3 characters"
   />
 
   <label for="inv_year">Year: </label>
@@ -38,9 +40,11 @@
     type="integer"
     name="inv_year"
     id="inv_year"
+    step="1"
     required
     value="<%= locals.inv_year %>"
     title="Vehicle manufacturing year"
+    placeholder="YYYY"
   />
 
   <label for="inv_description">Description: </label>
@@ -48,9 +52,10 @@
     name="inv_description"
     id="inv_description"
     required
-    value="<%= locals.inv_description %>"
     title="Vehicle description"
-  ></textarea>
+  >
+<%= locals.inv_description %></textarea
+  >
 
   <label for="inv_image">Image URL: </label>
   <input
@@ -58,7 +63,7 @@
     name="inv_image"
     id="inv_image"
     required
-    value="<%= locals.inv_image %>"
+    value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
     title="Vehicle image URL"
   />
 
@@ -68,7 +73,7 @@
     name="inv_thumbnail"
     id="inv_thumbnail"
     required
-    value="<%= locals.inv_thumbnail %>"
+    value="<%= locals.inv_thumbnail || '/images/vehicles/no-image.png' %>"
     title="Vehicle thumbnail URL"
   />
 
@@ -92,7 +97,7 @@
       type="number"
       name="inv_miles"
       id="inv_miles"
-      step="0.01"
+      step="1"
       required
       value="<%= locals.inv_miles %>"
       style="margin-right: 8px"
