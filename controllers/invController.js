@@ -102,4 +102,57 @@ invCont.buildAddInventory = async (req, res, next) => {
   });
 };
 
+/* ***************************
+ *  Add inventory item
+ * ************************** */
+invCont.addInventory = async (req, res, next) => {
+  let nav = await utilities.getNav();
+  let data = await invModel.getClassifications();
+  let classificationList = await utilities.buildClassificationList(data);
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id
+  } = req.body;
+
+  const regResult = await invModel.addInventoryItem({
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id
+  });
+
+  if (regResult) {
+    req.flash(
+      'notice',
+      `The new inventory item ${inv_make} ${inv_model} was added successfully.`
+    );
+    res.status(201).render('inventory/management', {
+      title: 'Inventory Management',
+      nav
+    });
+  } else {
+    req.flash('notice', 'Sorry, the registration failed.');
+    res.status(501).render('inventory/add-inventory', {
+      title: 'Add Inventory',
+      nav,
+      errors: null,
+      classificationList
+    });
+  }
+};
+
 module.exports = invCont;

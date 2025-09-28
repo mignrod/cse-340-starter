@@ -141,7 +141,7 @@ validate.checkInventoryData = async (req, res, next) => {
   );
   if (!errors.isEmpty()) {
     const nav = await utilities.getNav();
-    return res.render('inventory/add-inventory', {
+    return res.render('inventory/management', {
       title: 'Add New Inventory Item',
       nav,
       errors,
