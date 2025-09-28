@@ -122,7 +122,9 @@ invCont.addInventory = async (req, res, next) => {
     classification_id
   } = req.body;
 
-  const regResult = await invModel.addInventoryItem({
+  const classificationIdNum = parseInt(classification_id, 10);
+
+  const regResult = await invModel.addInventoryItem(
     inv_make,
     inv_model,
     inv_year,
@@ -132,8 +134,8 @@ invCont.addInventory = async (req, res, next) => {
     inv_price,
     inv_miles,
     inv_color,
-    classification_id
-  });
+    classificationIdNum
+  );
 
   if (regResult) {
     req.flash(
