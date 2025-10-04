@@ -33,7 +33,7 @@ router.post(
 // Route to successfully logged in
 router.get(
   '/',
-  // accountController.accountLogin,
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildAccountView)
 );
 

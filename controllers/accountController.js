@@ -116,6 +116,7 @@ async function accountLogin(req, res) {
           maxAge: 3600 * 1000
         });
       }
+      req.session.account_firstname = accountData.account_firstname;
       return res.redirect('/account/');
     } else {
       req.flash(
@@ -142,7 +143,8 @@ async function buildAccountView(req, res, next) {
   res.render('account/management', {
     title: 'Account Management',
     nav,
-    errors: null
+    errors: null,
+    firstname: req.session.account_firstname
   });
 }
 
