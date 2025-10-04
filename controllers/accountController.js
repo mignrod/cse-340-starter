@@ -117,6 +117,7 @@ async function accountLogin(req, res) {
         });
       }
       req.session.account_firstname = accountData.account_firstname;
+      req.session.loggedin = 1;
       return res.redirect('/account/');
     } else {
       req.flash(

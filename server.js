@@ -47,6 +47,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(utilities.checkJWTToken);
 
+// Access to firstname and login status in all views
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin;
+  res.locals.firstname = req.session.account_firstname;
+  next();
+});
+
 // Express Messages Middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
