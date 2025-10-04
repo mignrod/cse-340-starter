@@ -38,6 +38,21 @@ main {
 .navigation {
   background-color: black;
   margin: 1rem;
+  position: relative;
+}
+
+.nav-toggle {
+  /* display: none; */
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+  z-index: -1;
 }
 
 .navigation ul {
@@ -493,6 +508,44 @@ footer p {
 .add-inventory-form input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-toggle {
+    z-index: 10;
+    background: black;
+    color: white;
+    border: none;
+    font-size: larger;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.navigation.active {
+  width: fit-content;
+  position: absolute;
+  justify-self: end;
+  padding-right: 15px;
+  border-radius: 8px;
+  transition: all 0.5s linear;
+}
+
+.navigation.active .nav-menu {
+  display: block;
+  width: fit-content;
+}
+
+.navigation.active ul {
+  display: block;
+}
+
+.navigation.active li {
+  margin: 0.2rem 1rem 1rem;
 }
 
 @media screen and (min-width: 768px) {

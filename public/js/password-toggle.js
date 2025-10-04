@@ -15,3 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navigation = document.querySelector('.navigation');
+  navToggle.addEventListener('click', function () {
+    navigation.classList.toggle('active');
+  });
+});
+
+window.addEventListener('resize', function () {
+  if (window.innerWidth > 768) {
+    const navigation = document.querySelector('.navigation');
+    if (navigation && navigation.classList.contains('active')) {
+      navigation.classList.remove('active');
+    }
+  }
+});
