@@ -510,6 +510,56 @@ footer p {
   margin: 0;
 }
 
+.inventory-select {
+  text-align: center;
+  margin: 4rem;
+}
+
+.inventory-select select {
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: larger;
+}
+
+#inventoryDisplay {
+  margin-top: 2rem;
+  justify-self: center;
+  font-size: 1rem;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+#inventoryDisplay th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+
+#inventoryDisplay tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#inventoryDisplay tr:hover {
+  background-color: #e6f7ff;
+}
+
+#inventoryDisplay a {
+  color: #0074d9;
+  text-decoration: none;
+  margin: 0 4px;
+  font-weight: bold;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+  color: #005fa3;
+}
+
 @media screen and (max-width: 767px) {
   .nav-menu {
     display: none;
