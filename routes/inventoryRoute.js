@@ -54,4 +54,18 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
+// Route for edit inventory item
+router.get(
+  '/edit/:inventory_id',
+  utilities.handleErrors(invController.buildEditInventory)
+);
+
+// Post updates to an inventory item
+router.post(
+  '/update/',
+  invValidate.addInventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
 module.exports = router;

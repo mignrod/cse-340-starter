@@ -432,7 +432,8 @@ footer p {
 }
 
 .add-classification-form,
-.add-inventory-form {
+.add-inventory-form,
+.edit-inventory-form {
   border-radius: 8px;
   padding: 1rem;
   color: white;
@@ -447,7 +448,8 @@ footer p {
 }
 
 .add-classification-form button,
-.add-inventory-form button {
+.add-inventory-form button,
+.edit-inventory-form button {
   background-color: white;
   color: black;
   border: none;
@@ -461,26 +463,30 @@ footer p {
 }
 
 .add-classification-form button:hover,
-.add-inventory-form button:hover {
+.add-inventory-form button:hover,
+.edit-inventory-form button:hover {
   background-color: #009ec3;
   color: white;
 }
 
 .add-classification-form label,
-.add-inventory-form label {
+.add-inventory-form label,
+.edit-inventory-form label {
   font-weight: bold;
   margin-bottom: 0.3rem;
 }
 
 .add-classification-form input,
-.add-inventory-form input {
+.add-inventory-form input,
+.edit-inventory-form input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
 }
 
 .add-classification-form input:focus,
-.add-inventory-form input:focus {
+.add-inventory-form input:focus,
+.edit-inventory-form input:focus {
   outline: 2px solid #00bfea;
 }
 
@@ -489,7 +495,8 @@ footer p {
   margin: 0.5rem 0;
 }
 
-.add-inventory-form textarea {
+.add-inventory-form textarea,
+.edit-inventory-form textarea {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -498,14 +505,17 @@ footer p {
   font-size: 1rem;
 }
 
-.add-inventory-form select {
+.add-inventory-form select,
+.edit-inventory-form select {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
 }
 
 .add-inventory-form input[type='number']::-webkit-inner-spin-button,
-.add-inventory-form input[type='number']::-webkit-outer-spin-button {
+.add-inventory-form input[type='number']::-webkit-outer-spin-button,
+.edit-inventory-form input[type='number']::-webkit-inner-spin-button,
+.edit-inventory-form input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

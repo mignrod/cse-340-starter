@@ -1,0 +1,125 @@
+<title><%= title %></title>
+<h1><%= title %></h1>
+
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<form class="edit-inventory-form" action="/inv/update" method="post">
+  <label for="classification_id">Classification: </label>
+  <%- classificationSelect %>
+
+  <label for="inv_make">Make: </label>
+  <input
+    type="text"
+    id="inv_make"
+    name="inv_make"
+    required
+    value="<%= locals.inv_make %>"
+    title="Vehicle make company name"
+    placeholder="Min 3 characters"
+  />
+
+  <label for="inv_model">Model: </label>
+  <input
+    type="text"
+    name="inv_model"
+    id="inv_model"
+    required
+    value="<%= locals.inv_model %>"
+    title="Vehicle model name"
+    placeholder="Min 3 characters"
+  />
+
+  <label for="inv_year">Year: </label>
+  <input
+    type="integer"
+    name="inv_year"
+    id="inv_year"
+    step="1"
+    required
+    value="<%= locals.inv_year %>"
+    title="Vehicle manufacturing year"
+    placeholder="YYYY"
+  />
+
+  <label for="inv_description">Description: </label>
+  <textarea
+    name="inv_description"
+    id="inv_description"
+    required
+    title="Vehicle description"
+  >
+<%= locals.inv_description %></textarea
+  >
+
+  <label for="inv_image">Image URL: </label>
+  <input
+    type="text"
+    name="inv_image"
+    id="inv_image"
+    required
+    value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+    title="Vehicle image URL"
+  />
+
+  <label for="inv_thumbnail">Thumbnail URL: </label>
+  <input
+    type="text"
+    name="inv_thumbnail"
+    id="inv_thumbnail"
+    required
+    value="<%= locals.inv_thumbnail || '/images/vehicles/no-image.png' %>"
+    title="Vehicle thumbnail URL"
+  />
+
+  <label for="inv_price">Price: </label>
+  <div style="display: flex; align-items: center">
+    <input
+      type="number"
+      name="inv_price"
+      id="inv_price"
+      required
+      value="<%= locals.inv_price %>"
+      style="margin-right: 8px"
+      title="Vehicle price in USD"
+    />
+    <span> $</span>
+  </div>
+
+  <label for="inv_miles">Miles: </label>
+  <div style="display: flex; align-items: center">
+    <input
+      type="number"
+      name="inv_miles"
+      id="inv_miles"
+      step="1"
+      required
+      value="<%= locals.inv_miles %>"
+      style="margin-right: 8px"
+      title="Vehicle mileage"
+    />
+    <span>Miles</span>
+  </div>
+
+  <label for="inv_color">Color: </label>
+  <input
+    type="text"
+    name="inv_color"
+    id="inv_color"
+    required
+    value="<%=
+  locals.inv_color %>"
+    title="Vehicle color"
+  />
+
+  <input type="hidden" name="inv_id"
+  <% if(locals.inv_id) { %> value="<%=locals.inv_id %>"
+  <% } %>>
+
+  <button type="submit">Update Vehicle</button>
+</form>
