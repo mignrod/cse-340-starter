@@ -37,4 +37,11 @@ router.get(
   utilities.handleErrors(accountController.buildAccountView)
 );
 
+// Router to update account information
+router.get(
+  '/update/:account_email',
+  utilities.checkLogin, // Middleware to check session
+  utilities.handleErrors(accountController.buildUpdateAccount)
+);
+
 module.exports = router;

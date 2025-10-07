@@ -117,6 +117,8 @@ async function accountLogin(req, res) {
         });
       }
       req.session.account_firstname = accountData.account_firstname;
+      req.session.account_id = accountData.account_id;
+      req.session.account_type = accountData.account_type;
       req.session.loggedin = 1;
       return res.redirect('/account/');
     } else {
@@ -145,7 +147,33 @@ async function buildAccountView(req, res, next) {
     title: 'Account Management',
     nav,
     errors: null,
-    firstname: req.session.account_firstname
+    firstname: req.session.account_firstname,
+    account_id: req.session.account_id,
+    account_type: req.session.account_type
+  });
+}
+
+/* ****************************************
+ *  Buid update account view
+ * *************************************** */
+async function buildUpdateAccount(req, res, next) {
+  let nav = await utilities.getNav();
+  const account_email = req.session.account_email;
+  const accountData = await accountModel.getAccountByEmail(account_email);
+  if (!accountData) {
+    req.flash('notice', 'Account not found.');
+    return res.redirect('/account/');
+  }
+  res.render('account/update', {
+    title: 'Update Account',
+    nav,
+    errors: null,
+    account_id: accountData.account_id,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+    account_password: accountData.account_password,
+    account_type: accountData.account_type
   });
 }
 
@@ -154,5 +182,6 @@ module.exports = {
   buildRegister,
   registerAccount,
   accountLogin,
-  buildAccountView
+  buildAccountView,
+  buildUpdateAccount
 };
