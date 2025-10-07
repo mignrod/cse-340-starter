@@ -433,7 +433,8 @@ footer p {
 
 .add-classification-form,
 .add-inventory-form,
-.edit-inventory-form {
+.edit-inventory-form,
+.delete-inventory-form {
   border-radius: 8px;
   padding: 1rem;
   color: white;
@@ -449,7 +450,8 @@ footer p {
 
 .add-classification-form button,
 .add-inventory-form button,
-.edit-inventory-form button {
+.edit-inventory-form button,
+.delete-inventory-form button {
   background-color: white;
   color: black;
   border: none;
@@ -464,21 +466,24 @@ footer p {
 
 .add-classification-form button:hover,
 .add-inventory-form button:hover,
-.edit-inventory-form button:hover {
+.edit-inventory-form button:hover,
+.delete-inventory-form button:hover {
   background-color: #009ec3;
   color: white;
 }
 
 .add-classification-form label,
 .add-inventory-form label,
-.edit-inventory-form label {
+.edit-inventory-form label,
+.delete-inventory-form label {
   font-weight: bold;
   margin-bottom: 0.3rem;
 }
 
 .add-classification-form input,
 .add-inventory-form input,
-.edit-inventory-form input {
+.edit-inventory-form input,
+.delete-inventory-form input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -486,7 +491,8 @@ footer p {
 
 .add-classification-form input:focus,
 .add-inventory-form input:focus,
-.edit-inventory-form input:focus {
+.edit-inventory-form input:focus,
+.delete-inventory-form input:focus {
   outline: 2px solid #00bfea;
 }
 
@@ -506,7 +512,8 @@ footer p {
 }
 
 .add-inventory-form select,
-.edit-inventory-form select {
+.edit-inventory-form select,
+.delete-inventory-form select {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -515,9 +522,18 @@ footer p {
 .add-inventory-form input[type='number']::-webkit-inner-spin-button,
 .add-inventory-form input[type='number']::-webkit-outer-spin-button,
 .edit-inventory-form input[type='number']::-webkit-inner-spin-button,
-.edit-inventory-form input[type='number']::-webkit-outer-spin-button {
+.edit-inventory-form input[type='number']::-webkit-outer-spin-button,
+.delete-inventory-form input[type='number']::-webkit-inner-spin-button,
+.delete-inventory-form input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.delete-inventory-form p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
 }
 
 .inventory-select {
