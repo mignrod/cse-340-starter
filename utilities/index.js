@@ -187,4 +187,47 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Middleware to check admin/employee access
+ **************************************** */
+Util.requireAdminOrEmployee = (req, res, next) => {
+  if (req.cookies.jwt) {
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (
+          err ||
+          !accountData ||
+          !['Employee', 'Admin'].includes(accountData.account_type)
+        ) {
+          req.flash(
+            'notice',
+            'You must be logged in as Employee or Admin to access this page.'
+          );
+          res.clearCookie('jwt');
+          return res.status(403).render('account/login', {
+            title: 'Login',
+            nav: null,
+            errors: null,
+            account_email: ''
+          });
+        }
+        next();
+      }
+    );
+  } else {
+    req.flash(
+      'notice',
+      'You must be logged in as Employee or Admin to access this page.'
+    );
+    return res.status(403).render('account/login', {
+      title: 'Login',
+      nav: null,
+      errors: null,
+      account_email: ''
+    });
+  }
+};
+
 module.exports = Util;
