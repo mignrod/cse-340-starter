@@ -1,0 +1,45 @@
+<title><%= title %></title>
+<h1><%= title.charAt(0).toUpperCase() + title.slice(1) %></h1>
+
+<%- messages() %> <% if (errors) { %>
+<ul class="notice">
+  <% errors.array().forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+</ul>
+<% } %>
+
+<section>
+      <h2>Account Update</h2>
+      <form action="/account/update/<%= account_id %>" method="post" class="account-update-form">
+        <label for="account_firstname">First Name:</label>
+        <input type="text" id="account_firstname" name="account_firstname" title="Enter at least 2 characters" required value="<%= account_firstname %>">
+
+        <label for="account_lastname">Last Name:</label>
+        <input type="text" id="account_lastname" name="account_lastname" title="Enter at least 2 characters" required value="<%= account_lastname %>">
+
+        <label for="account_email">Email Address:</label>
+        <input type="email" id="account_email" name="account_email" title="Enter a valid email address" required value="<%= account_email %>">
+
+        <input type="hidden" name="account_id" value="<%= account_id %>">
+        
+        <button type="submit">Update Account</button>
+      </form>
+    </section>
+
+    <!-- Form to change password -->
+    <section>
+      <h2>Change Password</h2>
+      <p>
+        Enter a new password to change your current password.<br>
+        Passwords must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+    </p>
+      <form action="/account/update-password/<%= account_id %>" method="post" class="password-update-form">
+        <label for="account_password">New Password:</label>
+        <input type="password" id="account_password" name="account_password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.]).{12,}" title="Password must be at least 12 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.">
+
+        <input type="hidden" name="account_id" value="<%= account_id %>">
+
+        <button type="submit">Change Password</button>
+      </form>
+    </section>

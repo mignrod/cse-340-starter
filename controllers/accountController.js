@@ -154,26 +154,117 @@ async function buildAccountView(req, res, next) {
 }
 
 /* ****************************************
- *  Buid update account view
+ *  Build update account view
  * *************************************** */
 async function buildUpdateAccount(req, res, next) {
   let nav = await utilities.getNav();
-  const account_email = req.session.account_email;
-  const accountData = await accountModel.getAccountByEmail(account_email);
-  if (!accountData) {
+  console.log(req.params.account_id);
+  const account = await accountModel.getAccountById(req.params.account_id);
+  if (!account) {
     req.flash('notice', 'Account not found.');
     return res.redirect('/account/');
   }
-  res.render('account/update', {
+  res.render('account/update-account', {
     title: 'Update Account',
     nav,
     errors: null,
-    account_id: accountData.account_id,
-    account_firstname: accountData.account_firstname,
-    account_lastname: accountData.account_lastname,
-    account_email: accountData.account_email,
-    account_password: accountData.account_password,
-    account_type: accountData.account_type
+    account_id: account.account_id,
+    account_firstname: account.account_firstname,
+    account_lastname: account.account_lastname,
+    account_email: account.account_email,
+    account_password: account.account_password,
+    account_type: account.account_type
+  });
+}
+
+/* ****************************************
+ *  Process the update account request
+ * *************************************** */
+async function processAccountUpdate(req, res, next) {
+  let nav = await utilities.getNav();
+  const { account_id, account_firstname, account_lastname, account_email } =
+    req.body;
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  );
+  if (updateResult) {
+    req.session.account_firstname = account_firstname;
+    req.flash('notice', 'Your account was successfully updated.');
+    const account = await accountModel.getAccountById(account_id);
+    res.render('account/management', {
+      title: 'Update Management',
+      nav,
+      errors: null,
+      account_id: account.account_id,
+      account_firstname: account.account_firstname,
+      account_lastname: account.account_lastname,
+      account_email: account.account_email,
+      account_type: account.account_type,
+      firstname: req.session.account_firstname
+    });
+  } else {
+    req.flash('notice', 'Sorry, the update failed.');
+    res.status(501).render('account/update-account', {
+      title: 'Update Account',
+      nav,
+      errors: null,
+      account_id,
+      account_firstname,
+      account_lastname,
+      account_email
+    });
+  }
+}
+
+/* ****************************************
+ *  Process the password update
+ * *************************************** */
+async function processPasswordUpdate(req, res, next) {
+  let nav = await utilities.getNav();
+  const { account_id, account_password } = req.body;
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(account_password, 10);
+    const updateResult = await accountModel.updatePassword(
+      account_id,
+      hashedPassword
+    );
+
+    if (updateResult) {
+      req.flash('notice', 'Your password was successfully updated.');
+      res.redirect('/account/');
+    } else {
+      req.flash('notice', 'Sorry, the password update failed.');
+      res.status(501).render('account/update-account', {
+        title: 'Update Account',
+        nav,
+        errors: null,
+        account_id,
+        account_password
+      });
+    }
+  } catch (error) {
+    req.flash('notice', 'There was an error processing your request.');
+    res.status(500).render('account/update-account', {
+      title: 'Update Account',
+      nav,
+      errors: null,
+      account_id,
+      account_password
+    });
+  }
+}
+
+/* ****************************************
+ *  Logout process
+ * *************************************** */
+async function accountLogout(req, res, next) {
+  res.clearCookie('jwt');
+  req.session.destroy(() => {
+    res.redirect('/');
   });
 }
 
@@ -183,5 +274,8 @@ module.exports = {
   registerAccount,
   accountLogin,
   buildAccountView,
-  buildUpdateAccount
+  buildUpdateAccount,
+  processAccountUpdate,
+  processPasswordUpdate,
+  accountLogout
 };
