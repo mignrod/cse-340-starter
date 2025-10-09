@@ -30,14 +30,14 @@
     <!-- Form to change password -->
     <section>
       <h2>Change Password</h2>
-      <p>
-        Enter a new password to change your current password.<br>
-        Passwords must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
-    </p>
       <form action="/account/update-password/<%= account_id %>" method="post" class="password-update-form">
         <label for="account_password">New Password:</label>
         <input type="password" id="account_password" name="account_password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*.]).{12,}" title="Password must be at least 12 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.">
 
+        <small>
+          Enter a new password to change your current password.<br>
+          Passwords must be at least 12 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
+        </small>
         <input type="hidden" name="account_id" value="<%= account_id %>">
 
         <button type="submit">Change Password</button>

@@ -4,7 +4,7 @@
   </span>
   <div id="tools">
     <% if (loggedin && firstname) { %>
-    <span>Welcome,<a title="Account Management" href="/inv/" style="margin-left: 8px;"><strong><%= firstname %>! | </strong></a></span>
+    <span>Welcome,<a title="Account Management" href="/account/" style="margin-left: 8px;"><strong><%= firstname %>! | </strong></a></span>
     <a title="Logout" href="/account/logout"><strong>Logout</strong></a>
     <% } else { %>
     <a title="Click to log in" href="/account/login">My Account</a>

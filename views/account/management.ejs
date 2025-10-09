@@ -13,13 +13,13 @@
 <p>You are logged in.</p>
 
 <p>
-  <a class="update-account-link" href="/account/update/<%= account_id %>">Update Account Information</a>
+  <a class="update-account-link" href="/account/update/<%= account_id %>">Update Account</a>
 </p>
 <% if (account_type === 'Employee' || account_type === 'Admin') { %>
   <div class="inv-management-section">
     <h3>Inventory Management</h3>
-    <p>
+    <button class="inv-management-button">
       <a class="inv-management-link" href="/inv/">Go to Inventory Management</a>
-    </p>
+    </button>
   </div>
 <% } %>

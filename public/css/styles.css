@@ -434,7 +434,9 @@ footer p {
 .add-classification-form,
 .add-inventory-form,
 .edit-inventory-form,
-.delete-inventory-form {
+.delete-inventory-form,
+.account-update-form,
+.password-update-form {
   border-radius: 8px;
   padding: 1rem;
   color: white;
@@ -451,7 +453,9 @@ footer p {
 .add-classification-form button,
 .add-inventory-form button,
 .edit-inventory-form button,
-.delete-inventory-form button {
+.delete-inventory-form button,
+.account-update-form button,
+.password-update-form button {
   background-color: white;
   color: black;
   border: none;
@@ -467,7 +471,9 @@ footer p {
 .add-classification-form button:hover,
 .add-inventory-form button:hover,
 .edit-inventory-form button:hover,
-.delete-inventory-form button:hover {
+.delete-inventory-form button:hover,
+.account-update-form button:hover,
+.password-update-form button:hover {
   background-color: #009ec3;
   color: white;
 }
@@ -475,7 +481,9 @@ footer p {
 .add-classification-form label,
 .add-inventory-form label,
 .edit-inventory-form label,
-.delete-inventory-form label {
+.delete-inventory-form label,
+.account-update-form label,
+.password-update-form label {
   font-weight: bold;
   margin-bottom: 0.3rem;
 }
@@ -483,7 +491,9 @@ footer p {
 .add-classification-form input,
 .add-inventory-form input,
 .edit-inventory-form input,
-.delete-inventory-form input {
+.delete-inventory-form input,
+.account-update-form input,
+.password-update-form input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
@@ -492,11 +502,14 @@ footer p {
 .add-classification-form input:focus,
 .add-inventory-form input:focus,
 .edit-inventory-form input:focus,
-.delete-inventory-form input:focus {
+.delete-inventory-form input:focus,
+.account-update-form input:focus,
+.password-update-form input:focus {
   outline: 2px solid #00bfea;
 }
 
-.add-classification-form small {
+.add-classification-form small,
+.password-update-form small {
   text-align: center;
   margin: 0.5rem 0;
 }
@@ -584,6 +597,52 @@ footer p {
 #inventoryDisplay a:hover {
   text-decoration: underline;
   color: #005fa3;
+}
+
+.update-account-link {
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  border: 2px solid #00bfea;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+.update-account-link:hover {
+  color: #00bfea;
+  text-decoration: underline;
+}
+
+.inv-management-section {
+  border: 2px solid #00bfea;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: white;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  justify-self: center;
+}
+
+.inv-management-button {
+  background-color: #18548f;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.inv-management-link {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.inv-management-button:hover {
+  background-color: #009ec3;
 }
 
 @media screen and (max-width: 767px) {
@@ -712,5 +771,10 @@ footer p {
   .management-links ul {
     display: flex;
     flex-direction: row;
+  }
+
+  .update-account-link {
+    right: 10vw;
+    top: 30vh;
   }
 }
