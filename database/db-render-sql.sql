@@ -251,3 +251,13 @@ UPDATE
 SET
     inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+
+--  Table for reviews
+CREATE TABLE review (
+  review_id SERIAL PRIMARY KEY,
+  inv_id INTEGER REFERENCES inventory(inv_id),
+  account_id INTEGER REFERENCES account(account_id),
+  review_text TEXT NOT NULL,
+  rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

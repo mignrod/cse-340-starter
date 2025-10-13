@@ -1,5 +1,7 @@
 const invModel = require('../models/inventory-model');
 const utilities = require('../utilities/');
+const reviewModel = require('../models/review-model');
+const session = require('express-session');
 
 const invCont = {};
 
@@ -28,10 +30,22 @@ invCont.buildByInventoryId = async (req, res, next) => {
   const detailView = await utilities.buildDetailsView(data);
   const nav = await utilities.getNav();
   const name = data.inv_year + ' ' + data.inv_make + ' ' + data.inv_model;
+  const reviews = await reviewModel.getReviewsByInventoryId(inventory_id);
+  // Obtain a average rating if there are reviews
+  let avgRating = null;
+  if (reviews && reviews.length > 0) {
+    const sum = reviews.reduce((acc, r) => acc + r.rating, 0);
+    avgRating = (sum / reviews.length).toFixed(1);
+  }
   res.render('inventory/details', {
     title: name,
     nav,
-    detailView
+    detailView,
+    reviews,
+    avgRating,
+    inv_id: inventory_id,
+    loggedin: req.session.loggedin,
+    session_account_id: req.session.account_id
   });
 };
 

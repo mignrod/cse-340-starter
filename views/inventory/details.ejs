@@ -14,3 +14,62 @@ Message Block
 Inventory items displayed on a grid
 -->
 <%- detailView %>
+
+<!-- Review section -->
+<!-- Review section -->
+<section class="review-section">
+  <h2>
+      Reviews
+  <% if (avgRating) { %>
+    <span class="avg-rating">
+      Avg: 
+      <% 
+        const fullStars = Math.floor(avgRating);
+        const halfStar = avgRating % 1 >= 0.5;
+        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+      %>
+      <span class="stars">
+        <% for(let i=0; i<fullStars; i++) { %>
+          <span class="star">&#9733;</span>
+        <% } %>
+        <% if(halfStar) { %>
+          <span class="star half-star">&#9733;</span>
+        <% } %>
+        <% for(let i=0; i<emptyStars; i++) { %>
+          <span class="star empty">&#9733;</span>
+        <% } %>
+      </span>
+    </span>
+  <% } %>
+  </h2>
+  <% if (reviews && reviews.length > 0) { %>
+    <ul class="review-list">
+      <% reviews.forEach(review => { %>
+        <li class="review-item">
+          <div class="review-header">
+            <strong><%= review.account_firstname %> <%= review.account_lastname %></strong>
+            <span class="review-rating">
+              (<%= review.rating %>/5)
+              <% for(let i=1; i<=review.rating; i++) { %>
+                <span class="star">&#9733;</span>
+              <% } %>
+            </span>
+          </div>
+          <div class="review-text"><%= review.review_text %></div>
+          <small class="review-date"><%= new Date(review.created_at).toLocaleDateString() %></small>
+          <% if (loggedin && review.account_id == session_account_id) { %>
+            <form action="/review/delete/<%= review.review_id %>" method="post" style="float:right;">
+              <input type="hidden" name="inv_id" value="<%= inv_id %>">
+              <button type="submit" class="review-delete-btn" aria-label="Delete this review" onclick="return confirm('Are you sure you want to delete this review?');">Delete</button>
+            </form>
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No reviews yet for this vehicle.</p>
+  <% } %>
+  <% if (loggedin) { %>
+    <a href="/review/add/<%= inv_id %>" class="add-review-btn">Add a Review</a>
+  <% } %>
+</section>
