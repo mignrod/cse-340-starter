@@ -68,6 +68,7 @@ Inventory items displayed on a grid
     </ul>
   <% } else { %>
     <p>No reviews yet for this vehicle.</p>
+    <h3 style="color: rgb(240, 13, 13);">To add a review, you must be logged in.</h3>
   <% } %>
   <% if (loggedin) { %>
     <a href="/review/add/<%= inv_id %>" class="add-review-btn">Add a Review</a>
